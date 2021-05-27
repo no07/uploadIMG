@@ -6,23 +6,33 @@ use Illuminate\Http\Request;
 use App\ImageUpload;
 
 class ImageUploadController extends Controller
-{ public function fileCreate()
 {
-    return view('imageupload');
-}
+    public function index(){
+
+        $images = \File::allFiles(public_path('images'));
+
+        return View('form')->with(array('images'=>$images));
+
+    }
+    public function fileCreate()
+    {
+        return view('imageupload');
+    }
+
     public function fileStore(Request $request)
     {
         $image = $request->file('file');
         $imageName = $image->getClientOriginalName();
-        $image->move(public_path('images'),$imageName);
+        $image->move(public_path('images'), $imageName);
 
-        return response()->json(['success'=>$imageName]);
+        return response()->json(['success' => $imageName]);
     }
+
     public function fileDestroy(Request $request)
     {
-        $filename =  $request->get('filename');
-        ImageUpload::where('filename',$filename)->delete();
-        $path=public_path().'/images/'.$filename;
+        $filename = $request->get('filename');
+        ImageUpload::where('filename', $filename)->delete();
+        $path = public_path() . '/images/' . $filename;
         return $filename;
     }
 }

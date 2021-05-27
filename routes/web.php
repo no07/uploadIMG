@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','ImageUploadController@fileCreate');
 Route::post('image/upload/store','ImageUploadController@fileStore');
 Route::post('image/delete','ImageUploadController@fileDestroy');
+Route::get('list','ImageUploadController@index')->name('form.index');
