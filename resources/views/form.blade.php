@@ -15,7 +15,7 @@
                     <ul>
                         @foreach ($images as $image)
                             <li style="width:120px;display:inline-block;margin:5px 0px">
-                                <img src="{{ asset('images/' . $image->getFilename()) }}" width="12" height="12">
+                                <img src="{{ asset('images/' . $image->getFilename()) }}" width="120" height="120">
                             </li>
                         @endforeach
                     </ul>
