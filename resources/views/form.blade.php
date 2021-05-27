@@ -11,12 +11,11 @@
 <body style="background-color: #2B2E33"><div class="container">
     <div class="row justify-content-center">
             <div class="col-md-12">
-                    <h2>Show All Image from public folder using Laravel</h2>
 
                     <ul>
                         @foreach ($images as $image)
-                            <li style="width:80px;display:inline-block;margin:5px 0px">
-                                <img src="{{ asset('images/' . $image->getFilename()) }}" width="50" height="50">
+                            <li style="width:120px;display:inline-block;margin:5px 0px">
+                                <img src="{{ asset('images/' . $image->getFilename()) }}" width="12" height="12">
                             </li>
                         @endforeach
                     </ul>
