@@ -7,7 +7,7 @@ use App\ImageUpload;
 
 class ImageUploadController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
         $images = \File::allFiles(public_path('images'));
         if($request->has('del')){
@@ -17,7 +17,7 @@ class ImageUploadController extends Controller
         return View('form')->with(array('images'=>$images));
 
     }
-    public function fileCreate()
+    public function fileCreate(Request $request)
     {
         return view('imageupload');
     }
