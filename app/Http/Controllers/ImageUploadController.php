@@ -14,7 +14,7 @@ class ImageUploadController extends Controller
             foreach($images as $image){
                 \File::delete(public_path('images').'/'.$image->getFilename());
             }
-            return Redirect::back();
+            return Redirect::to('list');
         }
         return View('form')->with(array('images'=>$images));
 
