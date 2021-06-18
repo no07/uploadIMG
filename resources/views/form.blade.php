@@ -18,6 +18,7 @@
                         </li>
                     @endforeach
                 </ul>
+                <a class="btn btn-danger btn-block" href="{{ asset('list') }}?del=1">Delete All</a>
             </div>
         </div>
     </div>
