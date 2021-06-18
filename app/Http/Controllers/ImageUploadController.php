@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\ImageUpload;
 
 class ImageUploadController extends Controller
@@ -12,8 +12,9 @@ class ImageUploadController extends Controller
         $images = \File::allFiles(public_path('images'));
         if($request->has('del')){
             foreach($images as $image){
-                \File::delete(asset('images' . $image->getFilename()));
+                \File::delete(public_path('images').'/'.$image->getFilename());
             }
+            return Redirect::back();
         }
         return View('form')->with(array('images'=>$images));
 
