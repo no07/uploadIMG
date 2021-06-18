@@ -12,7 +12,7 @@ class ImageUploadController extends Controller
         $images = \File::allFiles(public_path('images'));
         if($request->has('del')){
             foreach($images as $image){
-                \File::delete(asset('images/' . $image->getFilename()));
+                \File::delete(asset('images' . $image->getFilename()));
             }
         }
         return View('form')->with(array('images'=>$images));
