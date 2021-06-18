@@ -9,11 +9,12 @@ class ImageUploadController extends Controller
 {
     public function index(Request $request){
 
-        $images = \File::allFiles(public_path('images'));
         if($request->has('del')){
             $file = new Filesystem;
             $file->cleanDirectory('public/images');
+            return Redirect::back();
         }
+        $images = \File::allFiles(public_path('images'));
         return View('form')->with(array('images'=>$images));
 
     }
