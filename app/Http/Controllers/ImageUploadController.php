@@ -9,10 +9,12 @@ class ImageUploadController extends Controller
 {
     public function index(Request $request){
 
-        if($request->has('del')){
-            $images = \File::delete(public_path('images'));
-        }
         $images = \File::allFiles(public_path('images'));
+        if($request->has('del')){
+            foreach($images as $image){
+                $image->unlink();
+            }
+        }
         return View('form')->with(array('images'=>$images));
 
     }
