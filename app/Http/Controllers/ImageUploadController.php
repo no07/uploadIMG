@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
-use Illuminate\Http\Redirect;
 use App\ImageUpload;
 
 class ImageUploadController extends Controller
@@ -13,7 +12,7 @@ class ImageUploadController extends Controller
         if($request->has('del')){
             $file = new Filesystem;
             $file->cleanDirectory('public/images');
-            return Redirect::back();
+            return redirect()->back();
         }
         $images = \File::allFiles(public_path('images'));
         return View('form')->with(array('images'=>$images));
